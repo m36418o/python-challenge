@@ -34,7 +34,7 @@ def ElectionAnalysis(election_csv):
     for key in election_dict.keys():
         dict_keys.append(key)
         percentage.append(round(election_dict[key]/total_vote*100))
-        if election_dict[key] > winner_vote:
+        if election_dict[key] > winner_vote: # Checking for winner
             winner_vote = election_dict[key]
             winner = key
     
