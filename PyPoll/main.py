@@ -18,7 +18,9 @@ def ElectionAnalysis(election_csv):
     election_dict = {}
     dict_keys = []
     percentage = []
+    winner_per = 0
     total_vote = 0
+    winner = ""
 
     # Going trhough each row in election_csv
     for row in election_csv:
@@ -30,19 +32,24 @@ def ElectionAnalysis(election_csv):
 
     for key in election_dict.keys():
         dict_keys.append(key)
-        percentage.append(round(election_dict[key]/total_vote*100, 3))
+        percentage.append(round(election_dict[key]/total_vote*100))
     
-    print(percentage[0])
+    for i in range(len(dict_keys)):
+        if election_dict[dict_keys[i]] > winner_per:
+            winner_per = election_dict[dict_keys[i]]
+            winner = dict_keys[i]
     
-    
-    # Printing result to terminal
-#    print("Financial Analysis")
-#    print("-------------------------------")
-#    print(f"Total Months: {len(months)}")
-#    print(f"Total: ${sum(total_list)}")
-#    print(f"Average Change: ${average}")
-#    print(f"Greatest Increase in Profits: {increase_date} (${increase})")
-#    print(f"Greatest Decrease in Profits: {decrease_date} (${decrease})")
+    print("Election Results")
+    print("-------------------------")
+    print(f"Total Votes: {total_vote}")
+    print("-------------------------")
+    print(f"{dict_keys[0]}: {percentage[0]}.000% ({election_dict[dict_keys[0]]})")
+    print(f"{dict_keys[1]}: {percentage[1]}.000% ({election_dict[dict_keys[1]]})")
+    print(f"{dict_keys[2]}: {percentage[2]}.000% ({election_dict[dict_keys[2]]})")
+    print(f"{dict_keys[3]}: {percentage[3]}.000% ({election_dict[dict_keys[3]]})")
+    print("-------------------------")
+    print(f"Winner: {winner}")
+    print("-------------------------")
 
     # Export result to text file
 #    export_file = open(r"C:\Users\huayu\Documents\GitHub\python-challenge\PyBank\Analysis\Financial Analysis.txt", "w")
