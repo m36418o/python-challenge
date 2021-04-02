@@ -18,27 +18,27 @@ def ElectionAnalysis(election_csv):
     election_dict = {}
     dict_keys = []
     percentage = []
-    winner_per = 0
+    winner_vote = 0
     total_vote = 0
     winner = ""
 
     # Going trhough each row in election_csv
     for row in election_csv:
-        if row[2] not in election_dict.keys():
+        if row[2] not in election_dict.keys(): # check for existance of current key within the dictionary
             election_dict[row[2]] = 1
         else:
             election_dict[row[2]] += 1
         total_vote += 1
 
+    # Calculate vote percentage and winner
     for key in election_dict.keys():
         dict_keys.append(key)
         percentage.append(round(election_dict[key]/total_vote*100))
+        if election_dict[key] > winner_vote:
+            winner_vote = election_dict[key]
+            winner = key
     
-    for i in range(len(dict_keys)):
-        if election_dict[dict_keys[i]] > winner_per:
-            winner_per = election_dict[dict_keys[i]]
-            winner = dict_keys[i]
-    
+    # Printing results to terminal
     print("Election Results")
     print("-------------------------")
     print(f"Total Votes: {total_vote}")
@@ -79,7 +79,7 @@ def main():
         csvreader = csv.reader(csvfile, delimiter = ",")
         header = next(csvreader, None)
 
-        # Pass csvreader into the Financial Analysis Function
+        # Pass csvreader into the Election Analysis Function
         ElectionAnalysis(csvreader)
 
 if __name__ == "__main__":
