@@ -52,15 +52,19 @@ def ElectionAnalysis(election_csv):
     print("-------------------------")
 
     # Export result to text file
-#    export_file = open(r"C:\Users\huayu\Documents\GitHub\python-challenge\PyBank\Analysis\Financial Analysis.txt", "w")
-#    export_file.write("Financial Analysis\n")
-#    export_file.write("-------------------------------\n")
-#    export_file.write(f"Total Months: {len(months)}\n")
-#    export_file.write(f"Total: ${sum(total_list)}\n")
-#    export_file.write(f"Average Change: ${average}\n")
-#    export_file.write(f"Greatest Increase in Profits: {increase_date} (${increase})\n")
-#    export_file.write(f"Greatest Decrease in Profits: {decrease_date} (${decrease})\n")
-#    export_file.close()
+    export_file = open(r"C:\Users\huayu\Documents\GitHub\python-challenge\PyPoll\Analysis\Election Analysis.txt", "w")
+    export_file.write("Election Results\n")
+    export_file.write("-------------------------\n")
+    export_file.write(f"Total Votes: {total_vote}\n")
+    export_file.write("-------------------------\n")
+    export_file.write(f"{dict_keys[0]}: {percentage[0]}.000% ({election_dict[dict_keys[0]]})\n")
+    export_file.write(f"{dict_keys[1]}: {percentage[1]}.000% ({election_dict[dict_keys[1]]})\n")
+    export_file.write(f"{dict_keys[2]}: {percentage[2]}.000% ({election_dict[dict_keys[2]]})\n")
+    export_file.write(f"{dict_keys[3]}: {percentage[3]}.000% ({election_dict[dict_keys[3]]})\n")
+    export_file.write("-------------------------\n")
+    export_file.write(f"Winner: {winner}\n")
+    export_file.write("-------------------------\n")
+    export_file.close()
     
 
     return None
