@@ -1,5 +1,4 @@
 # Module Import
-import os # OS module for OS compatibility
 import csv # CSV module for csv read/write
 
 # CSV file path
